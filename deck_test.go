@@ -21,6 +21,19 @@ func TestNewDeck(t *testing.T) {
 	}
 }
 
+func TestDeal(t *testing.T) {
+	d := newDeck()
+	hand, remainingDeck := deal(d, 5)
+
+	if len(hand) != 5 {
+		t.Errorf("Expected hand length of 5, but got %v", len(hand))
+	}
+
+	if len(remainingDeck) != 11 {
+		t.Errorf("Expected remaining deck length of 11, but got %v", len(remainingDeck))
+	}
+}
+
 func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 	os.Remove("_decktesting")
 	
